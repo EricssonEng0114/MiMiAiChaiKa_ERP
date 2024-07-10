@@ -34,6 +34,11 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/contents",
+                "output": "/contents"
               }
             ],
             "styles": [
@@ -103,7 +108,7 @@
               "src/contents/css/bootstrap.min.css"
             ],
             "scripts": [
-               "src/contents/js/bootstrap.bundle.min.js"
+              "src/contents/js/bootstrap.bundle.min.js"
             ]
           }
         }

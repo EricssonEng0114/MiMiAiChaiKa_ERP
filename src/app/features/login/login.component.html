@@ -1,38 +1,52 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">
-                    <h3>Login</h3>
-                </div>
+        <div class="col-xl-10 col-lg-12 col-md-9">
+            <div class="card o-hidden border-0 shadow-lg my-5">
                 <div class="card-body">
-                    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-                        <div class="form-group">
-                            <mat-form-field class="w-100">
-                                <mat-label>Email</mat-label>
-                                <input matInput formControlName="email" type="email" class="form-control">
-                                <mat-error *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
-                                    Please enter a valid email
-                                </mat-error>
-                            </mat-form-field>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-md-6 d-flex justify-content-start align-items-center text-center">
+                                    <img src="/contents/img/MiMiAiChaiKa_Logo.png" alt="Logo" class="logo">
+                                </div>
+                                <div class="col-md-6 p-md-5 p-4">
+                                    <h3 class="card-title mb-4">Sign In</h3>
+                                    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                                        <div class="mb-4">
+                                            <label for="username" class="form-label">USERNAME</label>
+                                            <input type="text" id="username" formControlName="username"
+                                                class="form-control" placeholder="Username">
+                                            <div *ngIf="loginForm.get('username')?.invalid && (loginForm.get('username')?.dirty || loginForm.get('username')?.touched)"
+                                                class="text-danger">
+                                                Username is required
+                                            </div>
+                                        </div>
+                                        <div class="mb-4 position-relative">
+                                            <label for="password" class="form-label">PASSWORD</label>
+                                            <input [type]="showPassword ? 'text' : 'password'" id="password"
+                                                formControlName="password" class="form-control" placeholder="Password">
+                                            <div *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)"
+                                                class="text-danger">
+                                                Password is required
+                                            </div>
+                                            <button type="button"
+                                                class="btn position-absolute end-0 border-0"
+                                                style="top: 44%;"
+                                                (click)="togglePasswordVisibility()">
+                                                <mat-icon>{{ showPassword ? 'visibility_off' : 'visibility'
+                                                    }}</mat-icon>
+                                            </button>
+                                        </div>
+                                        <div class="d-grid gap-2">
+                                            <button type="submit" class="btn btn-warning btn-block"
+                                                [disabled]="loginForm.invalid">Login</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <mat-form-field class="w-100">
-                                <mat-label>Password</mat-label>
-                                <input matInput formControlName="password" type="password" class="form-control">
-                                <mat-error
-                                    *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
-                                    Password is required
-                                </mat-error>
-                            </mat-form-field>
-                        </div>
-                        <button mat-raised-button color="primary" type="submit"
-                            [disabled]="loginForm.invalid">Login</button>
-                        <button mat-button color="warn" type="button" (click)="onForgotPassword()">Forgot
-                            Password?</button>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
