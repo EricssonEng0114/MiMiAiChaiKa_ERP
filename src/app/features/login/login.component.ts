@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { APIService } from '../../Services/Common/API/api.service';
 import { Router } from '@angular/router';
+import { LoginService } from '../../Services/User/login.service';
+import { WebAPILoginKey } from '../../Model/ViewModel/WebAPILoginKey';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent {
 
   constructor(
     private fb: FormBuilder,
-    private apiServices: APIService,
+    private loginServices: LoginService,
     private router: Router
   ) {
     this.loginForm = this.fb.group({
@@ -23,19 +24,17 @@ export class LoginComponent {
     });
   }
 
-  
+
   onSubmit(): void {
     if (this.loginForm.valid) {
-      const { email, password } = this.loginForm.value;
-      // this.authService.login(email, password).subscribe(
-      //   response => {
-      //     console.log('Login successful', response);
-      //     this.router.navigate(['/dashboard']);
-      //   },
-      //   error => {
-      //     console.error('Login failed', error);
-      //   }
-      // );
+      const { username, password } = this.loginForm.value;
+      const dataSend: WebAPILoginKey = this.setUserAPISend(username, password);
+      this.loginServices.login(dataSend).subscribe(response=>
+      {
+
+      },error=>{
+
+      });
     }
   }
 
@@ -45,5 +44,18 @@ export class LoginComponent {
 
   togglePasswordVisibility(): void {
     this.showPassword = !this.showPassword; // Toggle password visibility
+  }
+
+  private setUserAPISend(username: string, password: string): WebAPILoginKey {
+    return {
+      apiCode: 0,
+      apiAppName: "",
+      apiKeyOwner: "",
+      keyStatus: true,
+      apiKey: "",
+      createDate: new Date(),
+      Username: username,
+      Password: password
+    };
   }
 }

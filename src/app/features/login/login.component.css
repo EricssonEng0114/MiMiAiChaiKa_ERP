@@ -1,17 +1,15 @@
 .card {
-    border-radius: 1rem;
-    padding: 1.5rem;
-  }
-  
-  .card-title {
-    margin-bottom: 1.5rem;
-  }
-  
-  .logo {
-    width: 100%; /* Adjust size as needed */
-    height: auto;
-    margin-bottom: 20px;
-  }
- .reveal-pass-icon{
-    color: #e8eaed;
- }
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+
+.card-title {
+  margin-bottom: 1.5rem;
+}
+
+.logo {
+  width: 100%;
+  /* Adjust size as needed */
+  height: auto;
+  margin-bottom: 20px;
+}
