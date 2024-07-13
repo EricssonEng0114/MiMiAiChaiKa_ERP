@@ -14,6 +14,6 @@ export class LoginService {
   constructor(private apiServices: APIService, private http: HttpClient) { }
 
   login(dataSend: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/login`, dataSend);
+    return this.http.post<any>(`${this.apiUrl}login`, dataSend);
   }
 }

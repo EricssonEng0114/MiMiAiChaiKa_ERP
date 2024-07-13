@@ -23,17 +23,23 @@
                                         </div>
                                         <div class="mb-4 position-relative">
                                             <label for="password" class="form-label">PASSWORD</label>
-                                            <input [type]="showPassword ? 'text' : 'password'" id="password"
-                                                formControlName="password" class="form-control" placeholder="Password">
+                                            <div class="input-group">
+                                                <input [type]="showPassword ? 'text' : 'password'" id="password"
+                                                    formControlName="password" class="form-control"
+                                                    placeholder="Password">
+
+                                                <button type="button"
+                                                    class="btn position-absolute end-0 border-0 text-secondary"
+                                                    style="top: 50%; transform: translateY(-50%);z-index: 99;"
+                                                    (click)="togglePasswordVisibility()">
+                                                    <mat-icon>{{ showPassword ? 'visibility_off' : 'visibility'
+                                                        }}</mat-icon>
+                                                </button>
+                                            </div>
                                             <div *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)"
                                                 class="text-danger">
                                                 Password is required
                                             </div>
-                                            <button type="button" class="btn position-absolute end-0 border-0"
-                                                style="top: 44%;" (click)="togglePasswordVisibility()">
-                                                <mat-icon>{{ showPassword ? 'visibility_off' : 'visibility'
-                                                    }}</mat-icon>
-                                            </button>
                                         </div>
                                         <div class="d-grid gap-2">
                                             <button type="submit" class="btn btn-warning btn-block"
