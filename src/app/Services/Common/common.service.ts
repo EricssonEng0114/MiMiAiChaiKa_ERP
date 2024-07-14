@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommonService {
+  private loadingSubject = new BehaviorSubject<boolean>(false);
+  loading$ = this.loadingSubject.asObservable();
   constructor() { }
 
   showToastVMsg(msg: string, title: string, icon: any) {
@@ -43,5 +46,14 @@ export class CommonService {
       text: msg,
       showConfirmButton: false
     });
+  }
+
+  // Loading spinner methods
+  showLoading() {
+    this.loadingSubject.next(true);
+  }
+
+  hideLoading() {
+    this.loadingSubject.next(false);
   }
 }

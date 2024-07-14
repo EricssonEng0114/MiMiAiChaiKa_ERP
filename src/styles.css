@@ -10,3 +10,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     outline: 0;
     box-shadow: 0 0 0 .25rem rgb(243, 221, 156)
 }
+
+input::-ms-reveal,
+input::-ms-clear {
+    display: none;
+}
+

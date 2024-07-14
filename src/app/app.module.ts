@@ -12,11 +12,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { LoginComponent } from './features/login/login.component';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { LoadingComponent } from './features/loading/loading.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +31,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     FormsModule,
     ReactiveFormsModule,
     MatIconModule,
-    BrowserAnimationsModule, // Corrected import
+    BrowserAnimationsModule, 
+    MatProgressSpinnerModule// Corrected import
   ],
   providers: [
     provideHttpClient(
