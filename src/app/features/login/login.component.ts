@@ -31,15 +31,18 @@ export class LoginComponent {
   }
 
   onSubmit(): void {
+    this.commonServices.showLoading();
     if (this.loginForm.valid) {
       const { username, password } = this.loginForm.value;
       const dataSend: WebAPILoginKey = this.setUserAPISend(username, password);
       this.loginServices.login(dataSend).subscribe({
         next: response => {
+          this.commonServices.hideLoading();
           this.commonServices.showToast('Login Successful', 'success')
           this.router.navigate(['/dashboard']);
         },
         error: error => {
+          this.commonServices.hideLoading();
           this.commonServices
             .showToastVMsg('Invalid username or password. Please try again.', 'Login Failed', 'error')
         }
